@@ -1,0 +1,9 @@
+name: StatsByRimon
+version: '1.0-SNAPSHOT'
+main: rimon.statsByRimon.StatsByRimon
+api-version: '1.21'
+depend: ["PlaceholderAPI"]
+
+commands:
+  Stats:
+    Description: opens stats menu

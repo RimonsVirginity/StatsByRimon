@@ -1,0 +1,23 @@
+gui-title: "&6%player_name%'s Stats"
+gui-size: 45
+
+items:
+  crop-stats:
+    material: PLAYER_HEAD
+    skull: "%player_name%" # uses player's head
+    slot: 10
+    name: "&a%player_name%'s Crop Stats"
+    glow: true
+    lore:
+      - "&eCarrots Broken: &f%statistic_mine_block:carrots%"
+      - "&ePotatoes Broken: &f%statistic_mine_block:potatoes%"
+      - "&eSugar Cane Broken: &f%statistic_mine_block:sugar_cane%"
+
+  mob-stats:
+    material: NETHER_STAR
+    slot: 12
+    name: "&c%player_name%'s Mob Stats"
+    glow: false
+    lore:
+      - "&eDragons Killed: &f%statistic_kill_entity:ender_dragon%"
+      - "&eWithers Killed: &f%statistic_kill_entity:wither%"
