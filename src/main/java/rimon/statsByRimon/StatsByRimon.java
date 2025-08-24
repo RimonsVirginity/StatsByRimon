@@ -16,6 +16,7 @@ public final class StatsByRimon extends JavaPlugin {
         }
 
         getCommand("Stats").setExecutor(new openCommand(this));
+        getServer().getPluginManager().registerEvents(new GUIListener(this), this);
 
         getLogger().info("StatsByRimon enabled!");
 

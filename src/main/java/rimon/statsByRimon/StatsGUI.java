@@ -29,6 +29,11 @@ public class StatsGUI {
 
         // Items from config
         ConfigurationSection items = plugin.getConfig().getConfigurationSection("items");
+
+
+
+
+
         if (items != null) {
             for (String key : items.getKeys(false)) {
                 ConfigurationSection section = items.getConfigurationSection(key);
@@ -74,14 +79,35 @@ public class StatsGUI {
                 item.setItemMeta(meta);
 
                 // Slot placement
-                int slot = section.getInt("slot", -1);
-                if (slot >= 0 && slot < size) {
-                    gui.setItem(slot, item);
+                List<Integer> slots = new ArrayList<>();
+                if (section.isList("slot")) {
+                    // Handles the standard YAML list format: slot: [1, 2, 3]
+                    slots.addAll(section.getIntegerList("slot"));
+                } else if (section.isString("slot")) {
+                    // Handles the comma-separated string format: slot: "1,2,3"
+                    String[] slotStrings = section.getString("slot").split(",");
+                    for (String s : slotStrings) {
+                        try {
+                            slots.add(Integer.parseInt(s.trim()));
+                        } catch (NumberFormatException e) {
+                            // Log an error or warning that a slot value was not a valid number
+                            System.out.println("Warning: Invalid slot number '" + s + "' in config section '" + section.getName() + "'");
+                        }
+                    }
+                } else if (section.isInt("slot")) {
+                    // Handles the original single integer format for backward compatibility
+                    slots.add(section.getInt("slot"));
+                }
+
+
+                for (int slot : slots) {
+                    if (slot >= 0 && slot < size) {
+                        gui.setItem(slot, item);
+                    }
                 }
             }
+            // Open GUI
+            player.openInventory(gui);
         }
-
-        // Open GUI
-        player.openInventory(gui);
     }
 }
