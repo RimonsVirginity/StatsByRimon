@@ -5,5 +5,10 @@ api-version: '1.21'
 depend: ["PlaceholderAPI"]
 
 commands:
-  Stats:
+  Playerstats:
     Description: opens stats menu
+    aliases:
+      - stats
+      - ps
+    
+

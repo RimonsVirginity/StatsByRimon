@@ -1,4 +1,5 @@
-rimon\statsByRimon\StatsByRimon.class
 rimon\statsByRimon\GUIListener.class
 rimon\statsByRimon\openCommand.class
+rimon\statsByRimon\StatsHolder.class
+rimon\statsByRimon\StatsByRimon.class
 rimon\statsByRimon\StatsGUI.class
